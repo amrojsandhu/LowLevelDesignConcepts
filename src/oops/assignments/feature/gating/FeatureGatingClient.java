@@ -21,5 +21,21 @@ public class FeatureGatingClient {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        String condition2 = "age > 25 AND ( gender == \"Female\" OR order.total_amount > 1000 )";
+        Map<String, Object> attributes2 = new HashMap<>();
+        attributes2.put("age", 28);
+        attributes2.put("gender", "Female");
+        Map<String, Object> orders = new HashMap<>();
+        orders.put("total_amount", 900);
+        attributes2.put("order", orders);
+
+        try {
+            ConditionEvaluator conditionEvaluator = new ConditionEvaluator(attributes2, condition2);
+            Token<Boolean> response = conditionEvaluator.evaluate();
+            System.out.println(String.format("Response for the given condition: %s", response));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

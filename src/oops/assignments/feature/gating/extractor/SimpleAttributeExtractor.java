@@ -16,7 +16,7 @@ public class SimpleAttributeExtractor extends AttributeExtractor {
         Map<String, Object> map = getAttributes();
         String key = attributeKey.get();
         while(key.contains(".")) {
-            map = (Map<String, Object>) map.get(key.split(".")[0]);
+            map = (Map<String, Object>) map.get(key.split("\\.")[0]);
             key = key.substring(key.indexOf('.') + 1);
         }
         return new Operand<>((Comparable) map.get(key));

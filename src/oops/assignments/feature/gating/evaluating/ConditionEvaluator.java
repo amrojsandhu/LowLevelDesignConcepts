@@ -14,8 +14,8 @@ import java.util.*;
 
 public class ConditionEvaluator {
 
-    AttributeExtractor attributeExtractor;
-    Token[] tokens;
+    private AttributeExtractor attributeExtractor;
+    private Token[] tokens;
 
     public ConditionEvaluator(Map<String, Object> attributes, String condition) throws Exception {
         attributeExtractor = new SimpleAttributeExtractor(attributes);
