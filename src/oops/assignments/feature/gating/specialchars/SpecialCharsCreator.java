@@ -1,4 +1,4 @@
-package oops.assignments.feature.gating.brackets;
+package oops.assignments.feature.gating.specialchars;
 
 import oops.assignments.feature.gating.Token;
 import oops.assignments.feature.gating.TokenCreator;

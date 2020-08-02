@@ -2,7 +2,7 @@ package oops.assignments.feature.gating.evaluating;
 
 import oops.assignments.feature.gating.Token;
 import oops.assignments.feature.gating.TokenCreator;
-import oops.assignments.feature.gating.brackets.SpecialCharsCreator;
+import oops.assignments.feature.gating.specialchars.SpecialCharsCreator;
 import oops.assignments.feature.gating.connectors.ConnectorCreator;
 import oops.assignments.feature.gating.keys.AttributeKeyCreator;
 import oops.assignments.feature.gating.operands.OperandCreator;

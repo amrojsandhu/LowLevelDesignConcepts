@@ -1,4 +1,4 @@
-package oops.assignments.feature.gating.brackets;
+package oops.assignments.feature.gating.specialchars;
 
 public class StartBracket extends SpecialChars {
 

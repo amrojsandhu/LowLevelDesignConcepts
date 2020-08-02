@@ -1,8 +1,8 @@
 package oops.assignments.feature.gating.evaluating;
 
 import oops.assignments.feature.gating.Token;
-import oops.assignments.feature.gating.brackets.EndBracket;
-import oops.assignments.feature.gating.brackets.StartBracket;
+import oops.assignments.feature.gating.specialchars.EndBracket;
+import oops.assignments.feature.gating.specialchars.StartBracket;
 import oops.assignments.feature.gating.connectors.Connector;
 import oops.assignments.feature.gating.extractor.AttributeExtractor;
 import oops.assignments.feature.gating.extractor.SimpleAttributeExtractor;
