@@ -15,8 +15,9 @@ public class FeatureGatingClient {
         attributes.put("past_order_amount", 100);
 
         try {
-            ConditionEvaluator conditionEvaluator = new ConditionEvaluator(attributes, condition);
-            Token<Boolean> response = conditionEvaluator.evaluate();
+            System.out.println(String.format("Condition: %s", condition));
+            ConditionEvaluator conditionEvaluator = new ConditionEvaluator();
+            Token<Boolean> response = conditionEvaluator.evaluate(attributes, condition);
             System.out.println(String.format("Response for the given condition: %s", response));
         } catch (Exception e) {
             e.printStackTrace();
@@ -31,8 +32,9 @@ public class FeatureGatingClient {
         attributes2.put("order", orders);
 
         try {
-            ConditionEvaluator conditionEvaluator = new ConditionEvaluator(attributes2, condition2);
-            Token<Boolean> response = conditionEvaluator.evaluate();
+            System.out.println(String.format("\nCondition: %s", condition2));
+            ConditionEvaluator conditionEvaluator = new ConditionEvaluator();
+            Token<Boolean> response = conditionEvaluator.evaluate(attributes2, condition2);
             System.out.println(String.format("Response for the given condition: %s", response));
         } catch (Exception e) {
             e.printStackTrace();

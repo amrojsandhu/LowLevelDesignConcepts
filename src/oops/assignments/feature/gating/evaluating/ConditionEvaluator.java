@@ -14,23 +14,17 @@ import java.util.*;
 
 public class ConditionEvaluator {
 
-    private AttributeExtractor attributeExtractor;
-    private Token[] tokens;
-
-    public ConditionEvaluator(Map<String, Object> attributes, String condition) throws Exception {
-        attributeExtractor = new SimpleAttributeExtractor(attributes);
-        ConditionTokenizer conditionTokenizer = new ConditionTokenizer(condition);
-        tokens = conditionTokenizer.getTokens();
-    }
-
     /**
      * This function is similar to Expression Evaluator.
      *
      * @return true if the expression matches the conditions.
      * @throws Exception
      */
-    public Token evaluate() {
-        tokens = replaceAllOperators();
+    public Token evaluate(Map<String, Object> attributes, String condition) throws Exception {
+        ConditionTokenizer conditionTokenizer = new ConditionTokenizer(condition);
+        Token[] tokens = conditionTokenizer.getTokens();
+
+        tokens = replaceAllOperators(tokens, attributes);
 
         Stack<Operand> values = new Stack<>();
         Stack<Token> ops = new Stack<>();
@@ -69,7 +63,8 @@ public class ConditionEvaluator {
         return values.pop();
     }
 
-    private Token[] replaceAllOperators() {
+    private Token[] replaceAllOperators(Token[] tokens, Map<String, Object> attributes) {
+        AttributeExtractor attributeExtractor = new SimpleAttributeExtractor(attributes);
         List<Token> result = new ArrayList<>();
         for (int i = 0; i < tokens.length; i++) {
             if (tokens[i] instanceof AttributeKey) {
