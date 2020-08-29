@@ -37,14 +37,16 @@ public class BookMyShowClient {
         System.out.println();
 
         String bookId1 = bookingService.bookEvent("11", "1", "1", "1");
+        String bookId15 = bookingService.bookEvent("11", "1", "1", "1");
         String bookId2 = bookingService.bookEvent("12", "2", "1", "1");
         String bookId3 = bookingService.bookEvent("12", "1", "1", "2");
         String bookId4 = bookingService.bookEvent("13", "2", "1", "2");
-        System.out.println("BookedIds: " + bookId1 + ", " + bookId2 + ", " + bookId3 + ", " + bookId4);
+        System.out.println("BookedIds: " + bookId1 + ", " + bookId2 + ", " + bookId3 + ", " + bookId4 + ", " + bookId15);
         System.out.println();
 
-        System.out.println("Fetching booking for bookingId: " + bookId1);
-        Booking booking = bookingService.fetchBooking(bookId1);
+        String bookingId = bookId1 != null ? bookId1 : bookId2;
+        System.out.println("Fetching booking for bookingId: " + bookingId);
+        Booking booking = bookingService.fetchBooking(bookingId);
         System.out.println(booking);
     }
 }

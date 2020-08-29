@@ -29,6 +29,10 @@ public class SeatingGrid {
         this.grid = grid;
     }
 
+    public boolean vacateSeat(int row, int seatInTheRow) {
+        return this.grid[row][seatInTheRow] != null && !this.grid[row][seatInTheRow];
+    }
+
     public boolean bookSeat(int row, int seatInTheRow) {
         if (this.grid[row][seatInTheRow] == null || this.grid[row][seatInTheRow]) {
             throw new IllegalStateException("Either seat is unavailable or already booked.");
