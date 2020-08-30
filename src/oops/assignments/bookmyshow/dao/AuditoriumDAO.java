@@ -5,13 +5,13 @@ import oops.assignments.bookmyshow.objects.Auditorium;
 public class AuditoriumDAO {
 
     private String id;
-    private String cinemaHallId;
+    private String cinemaId;
     private Integer numOfRows;
     private Integer numOfSeatsPerRow;
 
     public AuditoriumDAO(Auditorium auditorium) {
         this.id = auditorium.getId();
-        this.cinemaHallId = auditorium.getCinemaHall().getId();
+        this.cinemaId = auditorium.getCinema().getId();
         this.numOfRows = auditorium.getNumOfRows();
         this.numOfSeatsPerRow = auditorium.getNumOfSeatsPerRow();
     }
@@ -21,7 +21,7 @@ public class AuditoriumDAO {
     }
 
     public String getCinemaHallId() {
-        return cinemaHallId;
+        return cinemaId;
     }
 
     public Integer getNumOfRows() {

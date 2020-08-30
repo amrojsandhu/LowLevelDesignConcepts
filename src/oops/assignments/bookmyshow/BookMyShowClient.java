@@ -11,16 +11,16 @@ import java.util.concurrent.*;
 public class BookMyShowClient {
 
     public static void main(String[] args) {
-        CinemaHallRepository cinemaHallRepository = new CinemaHallRepository();
+        CinemaRepository cinemaRepository = new CinemaRepository();
         MovieRepository movieRepository = new MovieRepository();
         SeatingGridRepository seatingGridRepository = new SeatingGridRepository();
         UserRepository userRepository = new UserRepository();
         PaymentService paymentService = new PaymentService();
-        AuditoriumRepository auditoriumRepository = new AuditoriumRepository(cinemaHallRepository);
+        AuditoriumRepository auditoriumRepository = new AuditoriumRepository(cinemaRepository);
         ShowRepository showRepository = new ShowRepository(movieRepository, seatingGridRepository, auditoriumRepository);
         TicketRepository ticketRepository = new TicketRepository(userRepository, showRepository);
         SearchService searchService = new SearchService(showRepository, movieRepository);
-        AdminService adminService = new AdminService(cinemaHallRepository, auditoriumRepository, movieRepository,
+        AdminService adminService = new AdminService(cinemaRepository, auditoriumRepository, movieRepository,
                 seatingGridRepository, showRepository, userRepository);
         BookingService bookingService = new BookingService(showRepository, userRepository, ticketRepository,
                 seatingGridRepository, paymentService);

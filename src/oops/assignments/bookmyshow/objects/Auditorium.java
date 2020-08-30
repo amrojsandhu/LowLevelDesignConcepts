@@ -3,13 +3,13 @@ package oops.assignments.bookmyshow.objects;
 public class Auditorium {
 
     private String id;
-    private CinemaHall cinemaHall;
+    private Cinema cinema;
     private Integer numOfRows;
     private Integer numOfSeatsPerRow;
 
-    public Auditorium(String id, CinemaHall cinemaHall, Integer numOfRows, Integer numOfSeatsPerRow) {
+    public Auditorium(String id, Cinema cinema, Integer numOfRows, Integer numOfSeatsPerRow) {
         this.id = id;
-        this.cinemaHall = cinemaHall;
+        this.cinema = cinema;
         this.numOfRows = numOfRows;
         this.numOfSeatsPerRow = numOfSeatsPerRow;
     }
@@ -18,8 +18,8 @@ public class Auditorium {
         return id;
     }
 
-    public CinemaHall getCinemaHall() {
-        return cinemaHall;
+    public Cinema getCinema() {
+        return cinema;
     }
 
     public Integer getNumOfRows() {

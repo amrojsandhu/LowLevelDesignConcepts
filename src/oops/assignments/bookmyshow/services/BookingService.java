@@ -49,7 +49,7 @@ public class BookingService {
 
         boolean paymentStatus = bookSeat(show, row, seatInTheRow);
         if(!paymentStatus) {
-            System.out.println("*** Payment failed for seatId: " + seatId);
+            System.out.println("*** Payment failed for seatId: " + seatId + ". The seat is released.");
             return null;
         }
         System.out.println("Payment success for seatId: " + seatId);

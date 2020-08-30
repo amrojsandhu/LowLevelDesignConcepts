@@ -8,17 +8,17 @@ import java.util.List;
 
 public class AdminService {
 
-    private CinemaHallRepository cinemaHallRepository;
+    private CinemaRepository cinemaRepository;
     private AuditoriumRepository auditoriumRepository;
     private MovieRepository movieRepository;
     private SeatingGridRepository seatingGridRepository;
     private ShowRepository showRepository;
     private UserRepository userRepository;
 
-    public AdminService(CinemaHallRepository cinemaHallRepository, AuditoriumRepository auditoriumRepository,
+    public AdminService(CinemaRepository cinemaRepository, AuditoriumRepository auditoriumRepository,
                         MovieRepository movieRepository, SeatingGridRepository seatingGridRepository,
                         ShowRepository showRepository, UserRepository userRepository) {
-        this.cinemaHallRepository = cinemaHallRepository;
+        this.cinemaRepository = cinemaRepository;
         this.auditoriumRepository = auditoriumRepository;
         this.movieRepository = movieRepository;
         this.seatingGridRepository = seatingGridRepository;
@@ -35,12 +35,12 @@ public class AdminService {
         userRepository.save(user3);
         System.out.println("Created Users: " + user1.getName() + ", " + user2.getName() + ", " + user3.getName());
 
-        CinemaHall cinemaHall = new CinemaHall("1", "DeathStar", "Galaxy far away");
-        cinemaHallRepository.save(cinemaHall);
-        System.out.println("Created Cinema Hall at: " + cinemaHall.getCity());
+        Cinema cinema = new Cinema("1", "DeathStar", "Galaxy far away");
+        cinemaRepository.save(cinema);
+        System.out.println("Created Cinema Hall at: " + cinema.getCity());
 
-        Auditorium auditorium1 = new Auditorium("A1", cinemaHall, 5, 5);
-        Auditorium auditorium2 = new Auditorium("A2", cinemaHall, 5, 4);
+        Auditorium auditorium1 = new Auditorium("A1", cinema, 5, 5);
+        Auditorium auditorium2 = new Auditorium("A2", cinema, 5, 4);
         auditoriumRepository.save(auditorium1);
         auditoriumRepository.save(auditorium2);
         System.out.println("Created Auditoriums: " + auditorium1.getId() + ", " + auditorium2.getId());
