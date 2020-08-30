@@ -9,12 +9,16 @@ public class Show {
     private SeatingGrid seatingGrid;
     private Auditorium auditorium;
 
-    public Show(String id, Long timeInEpoch,Integer costPerSeat, Movie movie, SeatingGrid seatingGrid,
+    public Show(String id, Long timeInEpoch, Integer costPerSeat, Movie movie, SeatingGrid seatingGrid,
                 Auditorium auditorium) {
         this.id = id;
         this.timeInEpoch = timeInEpoch;
         this.costPerSeat = costPerSeat;
         this.movie = movie;
+        if (seatingGrid.getRows() != auditorium.getNumOfRows()
+                || seatingGrid.getSeatsPerRow() != auditorium.getNumOfSeatsPerRow()) {
+            throw new IllegalStateException("Auditorium and SeatingGrid are not compatible.");
+        }
         this.seatingGrid = seatingGrid;
         this.auditorium = auditorium;
     }

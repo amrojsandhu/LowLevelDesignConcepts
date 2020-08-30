@@ -2,12 +2,11 @@ package oops.assignments.bookmyshow;
 
 import oops.assignments.bookmyshow.repository.*;
 import oops.assignments.bookmyshow.services.*;
-import oops.assignments.bookmyshow.sro.Booking;
 import oops.assignments.bookmyshow.sro.Event;
 import oops.assignments.bookmyshow.sro.Filter;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.*;
 
 public class BookMyShowClient {
 
@@ -36,17 +35,34 @@ public class BookMyShowClient {
         System.out.println("Events with title: " + filter.getTitle() + " are:\n" + Arrays.toString(events.toArray()));
         System.out.println();
 
-        String bookId1 = bookingService.bookEvent("11", "1", "1", "1");
-        String bookId15 = bookingService.bookEvent("11", "1", "1", "1");
-        String bookId2 = bookingService.bookEvent("12", "2", "1", "1");
-        String bookId3 = bookingService.bookEvent("12", "1", "1", "2");
-        String bookId4 = bookingService.bookEvent("13", "2", "1", "2");
-        System.out.println("BookedIds: " + bookId1 + ", " + bookId2 + ", " + bookId3 + ", " + bookId4 + ", " + bookId15);
-        System.out.println();
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        executor.execute(() -> {
+            final String bookId1 = bookingService.bookEvent("11", "1", "1", "1");
+            if (bookId1 != null)
+                System.out.println("Booked seating with details: " + bookingService.fetchBooking(bookId1));
+        });
+        executor.execute(() -> {
+            final String bookId1 = bookingService.bookEvent("11", "1", "1", "1");
+            if (bookId1 != null)
+                System.out.println("Booked seating with details: " + bookingService.fetchBooking(bookId1));
+        });
+        executor.execute(() -> {
+            final String bookId1 = bookingService.bookEvent("12", "2", "1", "1");
+            if (bookId1 != null)
+                System.out.println("Booked seating with details: " + bookingService.fetchBooking(bookId1));
+        });
+        executor.execute(() -> {
+            final String bookId1 = bookingService.bookEvent("13", "2", "1", "1");
+            if (bookId1 != null)
+                System.out.println("Booked seating with details: " + bookingService.fetchBooking(bookId1));
+        });
+        executor.execute(() -> {
+            final String bookId1 = bookingService.bookEvent("13", "2", "1", "1");
+            if (bookId1 != null)
+                System.out.println("Booked seating with details: " + bookingService.fetchBooking(bookId1));
+        });
+        executor.shutdown();
 
-        String bookingId = bookId1 != null ? bookId1 : bookId2;
-        System.out.println("Fetching booking for bookingId: " + bookingId);
-        Booking booking = bookingService.fetchBooking(bookingId);
-        System.out.println(booking);
     }
+
 }

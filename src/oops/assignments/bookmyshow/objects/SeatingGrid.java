@@ -5,11 +5,15 @@ import java.util.concurrent.locks.ReentrantLock;
 public class SeatingGrid {
 
     private String id;
+    private Integer rows;
+    private Integer seatsPerRow;
     private Boolean[][] grid;
     private ReentrantLock[] locks;
 
     public SeatingGrid(String id, int rows, int seatsPerRow, Boolean[][] grid) {
         this.id = id;
+        this.rows = rows;
+        this.seatsPerRow = seatsPerRow;
         this.grid = grid;
         this.locks = new ReentrantLock[rows * seatsPerRow];
         for (int lock = 0; lock < rows * seatsPerRow; lock++) {
@@ -19,6 +23,14 @@ public class SeatingGrid {
 
     public String getId() {
         return id;
+    }
+
+    public Integer getRows() {
+        return rows;
+    }
+
+    public Integer getSeatsPerRow() {
+        return seatsPerRow;
     }
 
     public Boolean[][] getGrid() {
